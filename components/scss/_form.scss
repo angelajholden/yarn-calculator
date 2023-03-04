@@ -9,7 +9,6 @@
 
 	label {
 		font-size: 0.9rem;
-		// text-transform: uppercase;
 		letter-spacing: 0.33px;
 	}
 
@@ -81,7 +80,7 @@
 			top: calc(50% - 5px);
 			left: -5px;
 			transform: translateY(-50%);
-			border: 2px solid darken($purple, 5%);
+			border: 2px solid lighten($purple, 15%);
 			z-index: -1;
 		}
 	}

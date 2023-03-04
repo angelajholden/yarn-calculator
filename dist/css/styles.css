@@ -615,7 +615,7 @@ button {
   top: calc(50% - 5px);
   left: -5px;
   transform: translateY(-50%);
-  border: 2px solid #3c2638;
+  border: 2px solid #7b4e71;
   z-index: -1;
 }
 @media (max-width: 960px) {
