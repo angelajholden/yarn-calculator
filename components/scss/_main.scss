@@ -92,7 +92,8 @@ main {
 }
 
 .secondary_title {
-	font-size: 1.75rem;
+	font-family: $nunito;
+	font-size: 2rem;
 	font-weight: 300;
 }
 
@@ -208,8 +209,11 @@ main {
 		margin-left: 20%;
 		padding: 50px 50px 50px 30%;
 		background-color: $white;
-		// border-radius: 20px;
 		box-shadow: 0 0 10px 10px rgba($black, 0.08);
+
+		.secondary_title {
+			color: $purple;
+		}
 	}
 
 	.results {
@@ -222,6 +226,20 @@ main {
 		height: calc(100% - 100px);
 		background-color: $purple;
 		color: $white;
+		z-index: 0;
+
+		&::before {
+			content: "";
+			display: block;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: calc(50% - 5px);
+			left: -5px;
+			transform: translateY(-50%);
+			border: 2px solid darken($purple, 5%);
+			z-index: -1;
+		}
 	}
 }
 
