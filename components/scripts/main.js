@@ -6,6 +6,23 @@ function copyrightYear() {
 	}
 }
 
+function openCloseMenu() {
+	const icon = document.getElementById("menu_icon");
+	const menu = document.getElementById("menu_drawer");
+
+	icon.addEventListener("click", (e) => {
+		const clicked = e.target.classList.contains("clicked");
+
+		if (clicked) {
+			icon.classList.remove("clicked");
+			menu.classList.remove("active");
+		} else {
+			icon.classList.add("clicked");
+			menu.classList.add("active");
+		}
+	});
+}
+
 function calculate() {
 	const yarn_calc = document.getElementById("yarn_calculator");
 
@@ -88,17 +105,19 @@ const loadVideo = () => {
 		.then((response) => response.json())
 		.then((result) => {
 			// console.log(result);
-			const link = result.items[0].link;
-			const title = result.items[0].title;
-			// const date = result.items[0].pubDate;
-			// const published = new Date(date);
-			const id = link.substr(link.indexOf("=") + 1);
 
-			const output = `<div class="title_container"><h2 class="latestTitle">${title}</h2></div><div class="video_container"><figure class="latestVideo"><iframe src="https://youtube.com/embed/${id}?&autoplay=1" frameborder="0" allowfullscreen></iframe></figure></div>`;
+			let output = "";
+			for (let i = 0; i < 3; i++) {
+				const link = result.items[i].link;
+				const title = result.items[i].title;
+				const id = link.substr(link.indexOf("=") + 1);
 
-			const video = document.getElementById("video");
-			if (video) {
-				video.innerHTML = output;
+				output += `<article class="video"><div class="video_container"><figure class="latestVideo"><iframe src="https://youtube.com/embed/${id}?&autoplay=1" frameborder="0" loading="lazy" allowfullscreen></iframe></figure></div><div class="title_container"><h2 class="latestTitle">${title}</h2></div></article>`;
+			}
+
+			const videos = document.getElementById("videos");
+			if (videos) {
+				videos.innerHTML = output;
 			}
 		});
 	// .catch((error) => console.log("error", error));
@@ -106,6 +125,7 @@ const loadVideo = () => {
 
 window.onload = () => {
 	copyrightYear();
+	openCloseMenu();
 	calculate();
 	loadVideo();
 };

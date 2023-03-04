@@ -1,0 +1,39 @@
+.videos {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	margin: 0 0 25px;
+
+	.title_container {
+		flex: 0 0 33.333%;
+		padding-left: 2rem;
+		order: 2;
+	}
+
+	.latestTitle {
+		font-size: 2rem;
+		font-weight: 300;
+	}
+
+	.video_container {
+		flex: 0 0 66.666%;
+		order: 1;
+	}
+
+	.latestVideo {
+		position: relative;
+		height: 0;
+		margin: 0;
+		padding-bottom: 56.25%;
+
+		iframe {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+}
