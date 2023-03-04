@@ -11,12 +11,12 @@ html {
 body {
 	margin: 0;
 	padding: 0;
-	font-family: "Helvetica", "Arial", sans-serif;
+	font-family: $nunito;
 	font-size: 100%;
 	font-weight: 400;
 	line-height: 1.75;
-	color: $white;
-	background-color: slategray;
+	color: $black;
+	background-color: $white;
 }
 
 img {
@@ -25,11 +25,11 @@ img {
 }
 
 a {
-	color: $white;
+	color: $blue;
 
 	&:hover,
 	&:active {
-		color: $white;
+		color: $blue;
 	}
 }
 
@@ -41,45 +41,197 @@ a {
 	clip: rect(0, 0, 0, 0);
 }
 
-h1 {
-	font-weight: 300;
+.message a {
+	display: block;
+	background-color: $orange;
+	padding: 10px 0;
+	font-size: 0.85rem;
+	line-height: 1;
+	color: $white;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 0.5px;
 }
 
-header,
-footer {
-	text-align: center;
+.header {
+	padding: 20px 0;
+	box-shadow: 0 1px 1px 0 rgba($black, 0.25);
+
+	h1 {
+		margin: 0;
+		text-align: center;
+		font-weight: 300;
+	}
+}
+
+.main_nav {
+	ul {
+		max-width: 1440px;
+		margin: 0 auto;
+		padding: 0;
+		list-style: none;
+		text-align: center;
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-evenly;
+	}
+
+	li a {
+		display: block;
+		color: $black;
+		text-decoration: none;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+	}
 }
 
 main {
-	max-width: 555px;
+	max-width: 1440px;
 	margin: 0 auto;
 }
 
-.input {
-	margin-bottom: 10px;
-}
-
-.heart {
-	display: inline-block;
-	vertical-align: sub;
+.secondary_title {
 	font-size: 1.75rem;
-	color: #990000;
+	font-weight: 300;
 }
 
-.video_container {
+.hero {
 	position: relative;
 	width: 100%;
 	height: 0;
-	margin: 0;
-	padding-bottom: 56.25%;
+	margin: 0 0 25px;
+	padding-bottom: 20%;
+
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
 }
 
-.latestVideo {
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+.videos {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	margin: 0 0 25px;
+
+	.title_container {
+		flex: 0 0 33.333%;
+		padding-left: 2rem;
+		order: 2;
+	}
+
+	.latestTitle {
+		font-size: 2rem;
+		font-weight: 300;
+	}
+
+	.video_container {
+		flex: 0 0 66.666%;
+		order: 1;
+	}
+
+	.latestVideo {
+		position: relative;
+		height: 0;
+		margin: 0;
+		padding-bottom: 56.25%;
+
+		iframe {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+}
+
+.form {
+	position: relative;
+	max-width: 1000px;
+	margin: 0 auto;
+
+	fieldset {
+		border: 0;
+	}
+
+	label {
+		font-size: 0.9rem;
+		// text-transform: uppercase;
+		letter-spacing: 0.33px;
+	}
+
+	input[type="number"],
+	input[type="text"] {
+		border: 0;
+		padding: 15px;
+		width: 100%;
+		border-radius: 10px;
+		background-color: $lightgray;
+	}
+
+	input[type="submit"],
+	input[type="reset"],
+	button {
+		padding: 15px 20px;
+		margin-bottom: 0;
+		border: 2px solid $green;
+		background-color: $green;
+		font-size: 0.9rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		color: $white;
+		cursor: pointer;
+		transition: all 300ms ease;
+
+		&:hover,
+		&:active {
+			border: 2px solid $green;
+			background-color: $white;
+			color: $green;
+		}
+	}
+
+	.input {
+		margin-bottom: 1rem;
+	}
+
+	.calculations {
+		margin-left: 20%;
+		padding: 50px 50px 50px 30%;
+		background-color: $white;
+		// border-radius: 20px;
+		box-shadow: 0 0 10px 10px rgba($black, 0.08);
+	}
+
+	.results {
+		position: absolute;
+		top: 50%;
+		left: 50px;
+		transform: translateY(-50%);
+		padding: 50px;
+		width: 400px;
+		height: calc(100% - 100px);
+		background-color: $purple;
+		color: $white;
+	}
+}
+
+footer {
+	padding: 25px 0;
+	text-align: center;
+
+	.heart {
+		display: inline-block;
+		font-size: 1rem;
+		color: $red;
+	}
 }

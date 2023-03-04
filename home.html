@@ -5,69 +5,80 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Yarn Calculator</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="dist/css/styles.css" />
 </head>
 
 <body>
-	<header>
-		<h1>Yarn Calculator</h1>
+	<div class="message">
+		<a href="https://www.youtube.com/channel/UC4VVojtCVaFNv-q9h4wt_aQ">New Videos Every Week!</a>
+	</div>
+
+	<header class="header">
+		<h1>Fiber &amp; Kraft</h1>
+		<nav class="main_nav">
+			<ul>
+				<li><a href="#">Calculators</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Shop</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
 	</header>
 
-	<main>
-		<form class="form yarn_calculator">
-			<fieldset>
-				<div class="input">
-					<h2>Unit of Measurement</h2>
-					<input id="meter" name="unit" type="radio" value="meter" checked /><label for="meter"> Meter</label><br>
-					<input id="yard" name="unit" type="radio" value="yard" /><label for="yard"> Yard</label>
-				</div>
+	<main class="main">
+		<section class="hero">
+			<img src="images/yarn-rainbow-fiber-and-kraft.jpg" alt="Yarn skeins arranged in a rainbow">
+		</section>
 
-				<div class="input">
-					<label for="start_yd">Beginning Yarn Length <span class="measure">(m)</span></label><br>
-					<input id="start_yd" type="number" step="0.01" min="0" />
-				</div>
+		<!--<section id="video" class="videos"></section>-->
 
-				<div class="input">
-					<label for="start_wt">Beginning Yarn Weight (gm)</label><br>
-					<input id="start_wt" type="number" step="0.01" min="0" />
-				</div>
+		<section class="calculator">
+			<form id="yarn_calculator" class="form">
+				<fieldset>
+					<div class="calculations">
+						<h2 class="secondary_title">Yarn Calculator</h2>
+						<div class="input">
+							<input id="yard" name="unit" type="radio" value="yard" checked /><label for="yard"> Yards</label><br>
+							<input id="meter" name="unit" type="radio" value="meter" /><label for="meter"> Meters</label>
+						</div>
 
-				<div class="input">
-					<label for="current_wt">Current Yarn Weight (gm)</label><br>
-					<input id="current_wt" type="number" step="0.01" min="0" />
-				</div>
+						<div class="input">
+							<label for="start_yd">Starting Fiber Length <span class="measure">(yd.)</span></label><br>
+							<input id="start_yd" type="number" step="0.01" min="0" />
+						</div>
 
-				<!--<div class="input">
-					<label for="project_wt">Project Yarn Weight</label><br>
-					<input id="project_wt" type="number" step="0.01" min="0" />
-				</div>-->
+						<div class="input">
+							<label for="start_wt">Starting Fiber Weight (gm)</label><br>
+							<input id="start_wt" type="number" step="0.01" min="0" />
+						</div>
 
-				<div>
-					<label class="access-hidden" for="reset">Reset</label>
-					<input id="reset" type="reset" value="Reset" />
-				</div>
+						<div class="input">
+							<label for="current_wt">Current Fiber Weight (gm)</label><br>
+							<input id="current_wt" type="number" step="0.01" min="0" />
+						</div>
 
-				<h2>Results</h2>
+						<div>
+							<label class="access-hidden" for="reset">Reset</label>
+							<input id="reset" type="reset" value="Reset" />
+						</div>
+					</div>
 
-				<div class="results">
-					<p><span id="current_yd">0</span> Yarn Remaining <span class="measure">(m)</span></p>
-					<p><span id="project_yd">0</span> Yarn in Project <span class="measure">(m)</span></p>
-					<p><span id="project_wt">0</span> Project Weight (gm)</p>
-
-					<!--<p><span id="grams_yd">0</span> Grams per Yard</p>
-					<p><span id="yards_gm">0</span> Yards per Gram</p>-->
-				</div>
-			</fieldset>
-		</form>
-
-		<section id="video" class="videos"></section>
+					<div class="results">
+						<h2 class="secondary_title">Results</h2>
+						<p>Fiber Remaining <span id="current_yd"></span> <span class="measure">(yd.)</span></p>
+						<p>Fiber in Project <span id="project_yd"></span> <span class="measure">(yd.)</span></p>
+						<p>Project Weight <span id="project_wt"></span> (gm)</p>
+					</div>
+				</fieldset>
+			</form>
+		</section>
 	</main>
 
-	<footer>
-		<p>
-			Copyright &copy; <span id="copy_date"></span> • Made with <span class="heart">&hearts;</span> in <a href="https://goo.gl/maps/cuV9q3aZ5E29HSJa7">Saint
-				Paul, Minnesota, USA</a>
-		</p>
+	<footer class="footer">
+		<p>Copyright &copy; <span id="copy_date"></span> • Made with <span class="heart">&hearts;</span> in <a href="https://goo.gl/maps/cuV9q3aZ5E29HSJa7">Saint Paul, Minnesota, USA</a></p>
 	</footer>
 </body>
 <script src="components/scripts/main.js"></script>
