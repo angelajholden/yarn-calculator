@@ -1,11 +1,14 @@
 function copyrightYear() {
 	const copyright = document.getElementById("copy_date");
-	const year = new Date();
-	copyright.innerHTML = year.getFullYear();
-	// console.log("copyright");
+	const year = new Date().getFullYear();
+	if (copyright) {
+		copyright.innerHTML = year;
+	}
 }
 
 function calculate() {
+	const yarn_calc = document.getElementById("yarn_calculator");
+
 	const startWt = document.getElementById("start_wt");
 	const startYd = document.getElementById("start_yd");
 	const currentWt = document.getElementById("current_wt");
@@ -64,7 +67,33 @@ function calculate() {
 	}
 }
 
+const loadVideo = () => {
+	const cid = "UC4VVojtCVaFNv-q9h4wt_aQ";
+	const channelURL = encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${cid}`);
+	const reqURL = `https://api.rss2json.com/v1/api.json?rss_url=${channelURL}`;
+
+	fetch(reqURL)
+		.then((response) => response.json())
+		.then((result) => {
+			console.log(result);
+			const link = result.items[0].link;
+			const title = result.items[0].title;
+			// const date = result.items[0].pubDate;
+			// const published = new Date(date);
+			const id = link.substr(link.indexOf("=") + 1);
+
+			const output = `<h2 class="latestTitle">${title}</h2><figure class="video_container"><iframe src="https://youtube.com/embed/${id}?&autoplay=1" class="latestVideo" frameborder="0" allowfullscreen></iframe></figure>`;
+
+			const video = document.getElementById("video");
+			if (video) {
+				video.innerHTML = output;
+			}
+		})
+		.catch((error) => console.log("error", error));
+};
+
 window.onload = () => {
 	copyrightYear();
 	calculate();
+	loadVideo();
 };
