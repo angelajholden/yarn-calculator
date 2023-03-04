@@ -108,11 +108,16 @@ const loadVideo = () => {
 
 			let output = "";
 			for (let i = 0; i < 3; i++) {
-				const link = result.items[i].link;
 				const title = result.items[i].title;
+
+				const pubDate = result.items[i].pubDate;
+				const date = new Date(Date.parse(pubDate));
+				// console.log(date.toDateString());
+
+				const link = result.items[i].link;
 				const id = link.substr(link.indexOf("=") + 1);
 
-				output += `<article class="video"><div class="video_container"><figure class="latestVideo"><iframe src="https://youtube.com/embed/${id}?&autoplay=1" frameborder="0" loading="lazy" allowfullscreen></iframe></figure></div><div class="title_container"><h2 class="latestTitle">${title}</h2></div></article>`;
+				output += `<article class="video"><div class="video_container"><figure class="latestVideo"><iframe src="https://youtube.com/embed/${id}?&autoplay=1&controls=0" frameborder="0" loading="lazy" allowfullscreen></iframe></figure></div><div class="title_container"><p class="pub-date">${date.toDateString()}</p><h2 class="latestTitle">${title}</h2></div></article>`;
 			}
 
 			const videos = document.getElementById("videos");
